@@ -6,14 +6,14 @@ import React from "react";
 
 const Summery = () => {
   return (
-    <div className="bg-primary text-white py-5 mt-5">
+    <div className="bg-primary text-white pt-5 pb-16 mt-5">
       <div className="container mx-auto mt-20 lg:px-32">
         <div className="font-bold text-center relative  after:w-36 after:bg-white after:h-1 after:absolute after:-bottom-2 after:left-0 after:right-0 after:mx-auto inline-block">
           <h2 className="text-5xl">Summery Of Our Company</h2>
           <span className="block">Let's watch summery of our company.</span>
         </div>
 
-        <div className="grid grid-cols-4 my-20">
+        <div className="flex lg:justify-between justify-center md:space-x-5 md:space-y-5 space-y-5 flex-wrap mt-10">
           <div className="summery-item bg-info rounded-full w-[250px] h-[250px] flex flex-col items-center justify-center">
             <div className="summery-item-image">
               <FontAwesomeIcon
@@ -36,10 +36,7 @@ const Summery = () => {
           </div>
           <div className="summery-item bg-info rounded-full w-[250px] h-[250px] flex flex-col items-center justify-center">
             <div className="summery-item-image">
-              <FontAwesomeIcon
-                className="text-white text-6xl"
-                icon={faStar}
-              />
+              <FontAwesomeIcon className="text-white text-6xl" icon={faStar} />
             </div>
             <h2 className="text-3xl font-bold my-3">33K+</h2>
             <h3 className="text-white text-xl">Reviews</h3>
