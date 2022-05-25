@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="text-base">
         <h2 className="text-4xl font-bold">TOPTOOL</h2>
         <p className="text-left">
-          Toptools.com.bd is an online store of quality <br className="hidden lg:block" /> professional
+          Toptool is an online store of quality <br className="hidden lg:block" /> professional
           tools with one of the largest ranges <br className="hidden lg:block" /> of power tools, hand
           tools, and cordless power <br className="hidden lg:block" /> tools.
         </p>
