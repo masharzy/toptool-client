@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Login = () => {
   const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useSignInWithEmailAndPassword(auth);
     console.log(googleError, emailError);
+  const [token] = useToken(emailUser || googleUser);
   const {
     register,
     handleSubmit,
@@ -49,10 +51,10 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from);
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   return (
     <div className="py-20">

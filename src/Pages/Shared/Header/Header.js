@@ -8,7 +8,6 @@ import Loader from "../Loader/Loader";
 
 const Header = () => {
   const [user, loading] = useAuthState(auth);
-  console.log(user);
   // const { displayName, email, photoURL } = user;
   if (loading) {
     return <Loader />;
@@ -38,30 +37,42 @@ const Header = () => {
               tabindex="0"
               class="dropdown-content menu p-2 shadow bg-base-100 w-52"
             >
-                {user?.photoURL ? (
-                  <img
-                    className="w-28 h-28 object-cover cursor-pointer rounded-full mx-auto border-8 border-primary my-2"
-                    src={user?.photoURL}
-                    alt="avatar"
-                  />
-                ) : (
-                  <img
-                    className="w-28 h-28 object-cover cursor-pointer rounded-full mx-auto border-8 border-primary my-2"
-                    src="https://i.ibb.co/D4NDdRH/585e4bf3cb11b227491c339a.png"
-                    alt="avatar"
-                  />
-                )}
+              {user?.photoURL ? (
+                <img
+                  className="w-28 h-28 object-cover cursor-pointer rounded-full mx-auto border-8 border-primary my-2"
+                  src={user?.photoURL}
+                  alt="avatar"
+                />
+              ) : (
+                <img
+                  className="w-28 h-28 object-cover cursor-pointer rounded-full mx-auto border-8 border-primary my-2"
+                  src="https://i.ibb.co/D4NDdRH/585e4bf3cb11b227491c339a.png"
+                  alt="avatar"
+                />
+              )}
+              <h4 className="justify-center w-full text-lg font-bold ">
+                {user?.displayName ? user.displayName : "Not Found"}
+              </h4>
+              <h4 className="justify-center w-full mb-2 text-md">
+                {user?.email ? user.email : "Not Found"}
+              </h4>
               <li>
                 <button
                   className="btn btn-primary text-white w-full"
-                  onClick={() => signOut(auth)}
+                  onClick={() => {
+                    signOut(auth);
+                    localStorage.removeItem("accessToken");
+                  }}
                 >
                   Log Out
                 </button>
               </li>
             </ul>
           </div>
-          <button className="btn btn-ghost ml-1" onClick={() => signOut(auth)}>
+          <button className="btn btn-ghost ml-1" onClick={() => {
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+          }}>
             Log Out
           </button>
         </>
