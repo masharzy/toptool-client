@@ -1,7 +1,6 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -233,13 +232,12 @@ const Purchase = () => {
                 } else if (e.target.value < toolMinimumOrderQuantity) {
                   setErrors({
                     ...errors,
-                    quantity:
-                      "Quantity Must be grater than minimum order quantity",
+                    quantity: `You have to purchase at least ${toolMinimumOrderQuantity} products`,
                   });
                 } else if (e.target.value > toolAvailableQuantity) {
                   setErrors({
                     ...errors,
-                    quantity: "Quantity Must be less than available quantity",
+                    quantity: `You can't purchase more than ${toolAvailableQuantity} products`,
                   });
                 } else {
                   setErrors({

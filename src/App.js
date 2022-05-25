@@ -10,6 +10,11 @@ import Register from "./Pages/Auth/Register/Register";
 import ResetPassword from "./Pages/Auth/ResetPassword/ResetPassword";
 import Purchase from "./Pages/Purchase/Purchase";
 import RequireAuth from "./Pages/Auth/RequireAuth/RequireAuth";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
+import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
+import AddReview from "./Pages/Dashboard/AddReview/AddReview";
+import EditProfile from "./Pages/Dashboard/EditProfile/EditProfile";
 
 function App() {
   return (
@@ -28,6 +33,19 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyProfile />} />
+          <Route path="myOrders" element={<MyOrders/>} />
+          <Route path="addReview" element={<AddReview/>} />
+          <Route path="editProfile" element={<EditProfile/>} />
+        </Route>
       </Routes>
       <Footer />
       <ToastContainer

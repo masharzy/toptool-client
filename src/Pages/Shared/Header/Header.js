@@ -17,7 +17,9 @@ const Header = () => {
       <CustomLink to="/">Home</CustomLink>
       {user ? (
         <>
-          <div class="dropdown dropdown-end ml-3">
+          <CustomLink to="/dashboard">Dashboard</CustomLink>
+
+          <div class="dropdown dropdown-end mr-1">
             <label tabindex="0">
               {user?.photoURL ? (
                 <img
@@ -69,10 +71,13 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <button className="btn btn-ghost ml-1" onClick={() => {
-            signOut(auth);
-            localStorage.removeItem("accessToken");
-          }}>
+          <button
+            className="btn btn-ghost"
+            onClick={() => {
+              signOut(auth);
+              localStorage.removeItem("accessToken");
+            }}
+          >
             Log Out
           </button>
         </>

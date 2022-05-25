@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -24,6 +25,7 @@ const Register = () => {
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const [token] = useToken(emailUser || googleUser);
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
@@ -68,10 +70,10 @@ const Register = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from);
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   return (
     <div className="py-20">

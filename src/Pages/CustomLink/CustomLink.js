@@ -8,7 +8,7 @@ const CustomLink = ({ children, to, ...props }) => {
   return (
       <Link
         // style={{backgroundColor: match ? "#31B2EE" : "white", color: match ? "white" : "#000000"}}
-        className={match ? "btn btn-primary text-white hover:btn-info hover:text-white" : "btn btn-ghost"}
+        className={match ? "btn btn-primary text-white hover:btn-info hover:text-white mx-1" : "btn btn-ghost mx-1"}
         to={to}
         {...props}
       >

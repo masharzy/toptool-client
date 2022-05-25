@@ -12,12 +12,10 @@ import useToken from "../../../hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [user] = useAuthState(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useSignInWithEmailAndPassword(auth);
-    console.log(googleError, emailError);
   const [token] = useToken(emailUser || googleUser);
   const {
     register,
