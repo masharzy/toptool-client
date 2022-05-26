@@ -47,7 +47,6 @@ const AddMoreInfo = () => {
       phone,
       linkedIn,
     };
-    console.log(moreInfo);
     axios
       .put(`http://localhost:5000/user/${user?.email}`, moreInfo, {
         headers: {
