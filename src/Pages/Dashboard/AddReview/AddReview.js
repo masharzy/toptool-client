@@ -22,6 +22,7 @@ const AddReview = () => {
     const review = {
       ...data,
       email: user.email,
+      image: user.photoURL,
     };
     await axios
       .post("http://localhost:5000/review", review, {
@@ -84,8 +85,6 @@ const AddReview = () => {
                   required: true,
                   min: 1,
                   max: 5,
-                  type: "number",
-                  valueAsNumber: true,
                 })}
               />
             </div>
@@ -111,17 +110,17 @@ const AddReview = () => {
               <textarea
                 class="textarea textarea-bordered h-24"
                 placeholder="Review Text"
-                {...register("ratingText", {
+                {...register("reviewText", {
                   required: true,
                   minLength: 10,
                 })}
               ></textarea>
-              {errors.ratingText?.type === "required" && (
+              {errors.reviewText?.type === "required" && (
                 <p className="text-red-600 text-left font-semibold">
                   Rating Text is required
                 </p>
               )}
-              {errors.ratingText?.type === "minLength" && (
+              {errors.reviewText?.type === "minLength" && (
                 <p className="text-red-600 text-left font-semibold">
                   Rating Text Must be Greater Than 10 Characters
                 </p>
