@@ -8,7 +8,6 @@ import Loader from "../Loader/Loader";
 
 const Header = () => {
   const [user, loading] = useAuthState(auth);
-  // const { displayName, email, photoURL } = user;
   if (loading) {
     return <Loader />;
   }

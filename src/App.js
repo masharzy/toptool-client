@@ -1,24 +1,25 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Header from "./Pages/Shared/Header/Header";
-import Home from "./Pages/Home/Home";
-import Footer from "./Pages/Shared/Footer/Footer";
-import Login from "./Pages/Auth/Login/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+import Login from "./Pages/Auth/Login/Login";
 import Register from "./Pages/Auth/Register/Register";
-import ResetPassword from "./Pages/Auth/ResetPassword/ResetPassword";
-import Purchase from "./Pages/Purchase/Purchase";
 import RequireAuth from "./Pages/Auth/RequireAuth/RequireAuth";
-import Dashboard from "./Pages/Dashboard/Dashboard";
-import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
-import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
+import ResetPassword from "./Pages/Auth/ResetPassword/ResetPassword";
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
-import EditProfile from "./Pages/Dashboard/EditProfile/EditProfile";
-import Payment from "./Pages/Dashboard/Payment/Payment";
-import AddMoreInfo from "./Pages/Dashboard/MyProfile/AddMoreInfo/AddMoreInfo";
+import AddTool from "./Pages/Dashboard/AddTool/AddTool";
 import AllUsers from "./Pages/Dashboard/AllUsers/AllUsers";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import EditProfile from "./Pages/Dashboard/EditProfile/EditProfile";
 import ManageProducts from "./Pages/Dashboard/ManageProducts/ManageProducts";
+import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
+import AddMoreInfo from "./Pages/Dashboard/MyProfile/AddMoreInfo/AddMoreInfo";
+import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
+import Payment from "./Pages/Dashboard/Payment/Payment";
+import Home from "./Pages/Home/Home";
+import Purchase from "./Pages/Purchase/Purchase";
+import Footer from "./Pages/Shared/Footer/Footer";
+import Header from "./Pages/Shared/Header/Header";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="payment/:id" element={<Payment />} />
           <Route path="makeAdmin" element={<AllUsers />} />
           <Route path="manageProducts" element={<ManageProducts />} />
+          <Route path="addTool" element={<AddTool />} />
         </Route>
       </Routes>
       <Footer />
