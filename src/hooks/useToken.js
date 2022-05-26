@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 const useToken = (user) => {
   const [token, setToken] = useState(null);
   useEffect(() => {
-    const name = user?.user?.displayName;
-    const image = user?.user?.photoURL;
-    const email = user?.user?.email;
-
-    const currentUser = { name, email, image };
+    const email = user?.email;
+    const currentUser = { email };
     if (email) {
       axios
         .put(`http://localhost:5000/user/${email}`, currentUser)

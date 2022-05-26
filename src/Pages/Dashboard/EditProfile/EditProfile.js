@@ -24,13 +24,13 @@ const EditProfile = () => {
   useEffect(() => {
     if (changes.name === user?.displayName) {
       setButtonDisabled(true);
-    }else{
-        setButtonDisabled(false);
+    } else {
+      setButtonDisabled(false);
     }
   }, [changes.name, user]);
   const onSubmit = async (data) => {
-    const { name, email, photo } = changes;
-    console.log(name);
+    console.log(changes.photo);
+    const { name } = changes;
     await updateProfile({ displayName: name });
     toast("Profile updated successfully", { type: "success" });
     console.log(user?.displayName);
@@ -44,12 +44,15 @@ const EditProfile = () => {
         console.log(res);
         if (res.data.success) {
           const updatePhotoUrl = async () => {
-            await updateProfile({ photoURL: res.data.data.url });
+            const photoUrl = res.data.data.url;
+            await updateProfile({ photoURL: photoUrl });
+            setChanges({ ...changes, photo: photoUrl });
           };
           updatePhotoUrl();
         }
       });
     }
+
   };
   if (loading) {
     return <Loader />;

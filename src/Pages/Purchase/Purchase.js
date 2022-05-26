@@ -1,10 +1,13 @@
+import axios from "axios";
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loader from "../Shared/Loader/Loader";
+import Swal from "sweetalert2";
 
 const Purchase = () => {
   const [user, loading] = useAuthState(auth);
@@ -38,8 +41,26 @@ const Purchase = () => {
       address,
       phone,
     };
-    console.log(purchase);
+    // post to order
+    axios
+      .post("http://localhost:5000/order", purchase, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Order Successful",
+            text: "Your order has been placed!!",
+          });
+          e.target.reset();
+        }
+      });
   };
+
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: tool, isLoading } = useQuery(["tool", id], () =>
@@ -321,7 +342,7 @@ const Purchase = () => {
               disabled={
                 errors.quantity || errors.address || errors.phone ? true : false
               }
-              className={"btn btn-primary text-white no-animation"}
+              className={"btn btn-primary text-white"}
             >
               Purchase
             </button>

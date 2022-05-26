@@ -25,7 +25,7 @@ const Register = () => {
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-  const [token] = useToken(emailUser || googleUser);
+  const [token] = useToken(user);
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });

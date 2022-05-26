@@ -15,6 +15,7 @@ import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
 import EditProfile from "./Pages/Dashboard/EditProfile/EditProfile";
+import Payment from "./Pages/Dashboard/Payment/Payment";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="myOrders" element={<MyOrders/>} />
           <Route path="addReview" element={<AddReview/>} />
           <Route path="editProfile" element={<EditProfile/>} />
+          <Route path="payment/:id" element={<Payment/>} />
         </Route>
       </Routes>
       <Footer />
