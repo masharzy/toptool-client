@@ -20,6 +20,7 @@ import Home from "./Pages/Home/Home";
 import Purchase from "./Pages/Purchase/Purchase";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Header/Header";
+import NotFound from "./Pages/Shared/NotFound/NotFound";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path="manageProducts" element={<ManageProducts />} />
           <Route path="addTool" element={<AddTool />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer
