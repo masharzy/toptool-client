@@ -13,7 +13,7 @@ const MyProfile = () => {
   const navigate = useNavigate();
 
   const { data: userInfo, isLoading } = useQuery("getUser", () =>
-    fetch(`http://localhost:5000/user/${user.email}`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/user/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

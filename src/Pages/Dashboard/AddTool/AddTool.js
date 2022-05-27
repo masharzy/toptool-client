@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
@@ -10,15 +10,12 @@ const AddTool = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data, e) => {
-console.log(data);
     const image = data.toolImage[0];
     const imageStorageKey = "25f8fd66fcd0b291d11ff45ad0f16374";
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
     const formData = new FormData();
     formData.append("image", image);
     await axios.post(url, formData).then((res) => {
-      console.log(res);
-      console.log(res.data.data.url);
       const toolImage = res.data.data.url;
       if (res.data.success) {
         const toolInfo = {
@@ -29,9 +26,8 @@ console.log(data);
           toolAvailableQuantity: data.toolAvailableQuantity,
           toolPrice: data.toolPrice,
         };
-        console.log(toolInfo);
         axios
-          .post("http://localhost:5000/tool", toolInfo, {
+          .post("https://evening-everglades-24047.herokuapp.com/tool", toolInfo, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,

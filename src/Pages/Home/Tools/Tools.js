@@ -1,12 +1,11 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
 import Loader from "../../Shared/Loader/Loader";
 import Tool from "../Tool/Tool";
 
 const Tools = () => {
   const { data: tools, isLoading } = useQuery("tools", () =>
-    fetch("http://localhost:5000/tools", {
+    fetch("https://evening-everglades-24047.herokuapp.com/tools", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

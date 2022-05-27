@@ -1,9 +1,9 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "react-query";
-import Loader from "../../Shared/Loader/Loader";
-import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import React from "react";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
+import Loader from "../../Shared/Loader/Loader";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import "./Payment.css";
 
@@ -11,7 +11,7 @@ const Payment = () => {
   const { id } = useParams();
 
   const { data: order, isLoading } = useQuery(["payment", id], () =>
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/order/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -25,8 +25,6 @@ const Payment = () => {
 
   const { name, email, toolID, toolName, price, quantity, address, phone } =
     order;
-
-  console.log(order);
 
   const stripePromise = loadStripe(
     "pk_test_51L2pFyD9mMGF7uwt14gUjXz4cIvPdp062V2rX01Sdt8g002c1qXKK9FGcR8gM2KLZiRQk3wZJYdkpNwxYKXeyXLB00Z85Eb8lL"

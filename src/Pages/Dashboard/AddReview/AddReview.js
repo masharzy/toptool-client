@@ -4,9 +4,9 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import auth from "../../../firebase.init";
 import Loader from "../../Shared/Loader/Loader";
-import Swal from "sweetalert2";
 
 const AddReview = () => {
   const [user, loading] = useAuthState(auth);
@@ -25,14 +25,13 @@ const AddReview = () => {
       image: user.photoURL,
     };
     await axios
-      .post("http://localhost:5000/review", review, {
+      .post("https://evening-everglades-24047.herokuapp.com/review", review, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 401 || res.status === 403) {
           localStorage.removeItem("accessToken");
           signOut(auth);

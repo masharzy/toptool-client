@@ -2,7 +2,7 @@ import axios from "axios";
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState, useUpdateProfile } from "react-firebase-hooks/auth";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ const EditProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const { data: userInfo, isLoading } = useQuery("getUser", () =>
-    fetch(`http://localhost:5000/user/${user.email}`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/user/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -63,7 +63,7 @@ const EditProfile = () => {
       linkedIn,
     };
     await axios
-      .put(`http://localhost:5000/user/${user.email}`, moreInfo, {
+      .put(`https://evening-everglades-24047.herokuapp.com/user/${user.email}`, moreInfo, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -83,7 +83,6 @@ const EditProfile = () => {
       const formData = new FormData();
       formData.append("image", image);
       await axios.post(url, formData).then((res) => {
-        console.log(res);
         if (res.data.success) {
           const updatePhotoUrl = async () => {
             const photoUrl = res.data.data.url;
@@ -99,7 +98,6 @@ const EditProfile = () => {
     return <Loader />;
   }
   const { education, linkedIn, location, phone } = userInfo;
-  console.log(changes);
   return (
     <div className="profile-information">
       <h4 className="text-2xl font-bold">Edit Profile</h4>

@@ -1,7 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const ManageProduct = ({ tool, refetch }) => {
@@ -26,7 +24,7 @@ const ManageProduct = ({ tool, refetch }) => {
     }).then((result) => {
       if (result.value) {
         axios
-          .delete(`http://localhost:5000/tool/${id}`, {
+          .delete(`https://evening-everglades-24047.herokuapp.com/tool/${id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },

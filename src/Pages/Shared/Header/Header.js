@@ -14,6 +14,8 @@ const Header = () => {
   const menu = (
     <>
       <CustomLink to="/">Home</CustomLink>
+      <CustomLink to="/portfolio">Portfolio</CustomLink>
+      <CustomLink to="/blogs">Blogs</CustomLink>
       {user ? (
         <>
           <CustomLink to="/dashboard">Dashboard</CustomLink>

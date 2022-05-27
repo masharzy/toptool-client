@@ -13,7 +13,7 @@ const AllUsers = () => {
     data: allUsers,
     refetch,
   } = useQuery("allUsers", () =>
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/users`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

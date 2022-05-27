@@ -2,18 +2,17 @@ import axios from "axios";
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import auth from "../../../../firebase.init";
 import Loader from "../../../Shared/Loader/Loader";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
 
 const AddMoreInfo = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const { data: userInfo, isLoading } = useQuery("getUser", () =>
-    fetch(`http://localhost:5000/user/${user.email}`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/user/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -48,7 +47,7 @@ const AddMoreInfo = () => {
       linkedIn,
     };
     axios
-      .put(`http://localhost:5000/user/${user?.email}`, moreInfo, {
+      .put(`https://evening-everglades-24047.herokuapp.com/user/${user?.email}`, moreInfo, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,

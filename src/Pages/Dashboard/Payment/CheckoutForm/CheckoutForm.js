@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ order }) => {
   const { _id, name, email, price, address, phone } = order;
@@ -18,7 +18,7 @@ const CheckoutForm = ({ order }) => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:5000/create-payment-intent",
+        "https://evening-everglades-24047.herokuapp.com/create-payment-intent",
         { price },
         {
           headers: {
@@ -89,8 +89,9 @@ const CheckoutForm = ({ order }) => {
       const payment = {
         transactionId: paymentIntent.id,
         paid: paymentIntent.status === "succeeded",
+        status: "pending",
       };
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://evening-everglades-24047.herokuapp.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

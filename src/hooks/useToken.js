@@ -8,7 +8,7 @@ const useToken = (user) => {
     const currentUser = { email };
     if (email) {
       axios
-        .put(`http://localhost:5000/user/${email}`, currentUser)
+        .put(`https://evening-everglades-24047.herokuapp.com/user/${email}`, currentUser)
         .then((res) => {
           const accessToken = res.data.token;
           localStorage.setItem("accessToken", accessToken);

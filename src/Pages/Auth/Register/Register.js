@@ -35,7 +35,6 @@ const Register = () => {
     const formData = new FormData();
     formData.append("image", image);
     await axios.post(url, formData).then((res) => {
-      console.log(res);
       if (res.data.success) {
         const updatePhotoUrl = async () => {
           await updateProfile({ photoURL: res.data.data.url });

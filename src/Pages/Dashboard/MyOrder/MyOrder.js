@@ -1,7 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
 
 const MyOrder = ({ myOrder, index, refetch }) => {
   const { _id, email, toolName, price, quantity, phone, paid, transactionId } =
@@ -18,13 +18,12 @@ const MyOrder = ({ myOrder, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/order/${id}`, {
+          .delete(`https://evening-everglades-24047.herokuapp.com/order/${id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
           })
           .then((res) => {
-            console.log(res);
             if (res.data.deletedCount > 0) {
               Swal.fire("Canceled!", res.data.message, "success");
               refetch();

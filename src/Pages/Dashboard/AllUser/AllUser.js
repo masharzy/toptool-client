@@ -1,15 +1,15 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import auth from "../../../firebase.init";
 import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 
 const AllUser = ({ user, index, refetch }) => {
   const navigate = useNavigate();
   const { email, role } = user;
 
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/admin/${email}`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -22,7 +22,6 @@ const AllUser = ({ user, index, refetch }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           toast.success(`${email} is now an admin`);
           refetch();
@@ -31,7 +30,7 @@ const AllUser = ({ user, index, refetch }) => {
   };
 
   const deleteUser = () => {
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/user/${email}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -46,7 +45,6 @@ const AllUser = ({ user, index, refetch }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         toast.success(`${email} deleted`);
         refetch();
       });

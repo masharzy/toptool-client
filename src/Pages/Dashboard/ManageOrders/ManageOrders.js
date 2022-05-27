@@ -1,22 +1,19 @@
 import { signOut } from "firebase/auth";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loader from "../../Shared/Loader/Loader";
-import MyOrder from "../MyOrder/MyOrder";
+import ManageOrder from "../ManageOrder/ManageOrder";
 
-const MyOrders = () => {
-  const [user] = useAuthState(auth);
-  const { email } = user;
+const ManageOrders = () => {
   const navigate = useNavigate();
   const {
+    data: orders,
     isLoading,
-    data: myOrders,
     refetch,
-  } = useQuery("myOrders", () =>
-    fetch(`https://evening-everglades-24047.herokuapp.com/orders/${email}`, {
+  } = useQuery("orders", async () =>
+    fetch("https://evening-everglades-24047.herokuapp.com/orders", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -25,11 +22,14 @@ const MyOrders = () => {
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem("accessToken");
         signOut(auth);
-        navigate("/");
+        navigate("/login");
       }
       return res.json();
     })
   );
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <div className="container mx-auto text-left pl-5 pr-5">
       <h1 className="text-2xl font-bold">My Orders</h1>
@@ -40,10 +40,9 @@ const MyOrders = () => {
               <th></th>
               <th>Email</th>
               <th>Tool Name</th>
-              <th>Quantity</th>
               <th>Total Price</th>
-              <th>Phone</th>
               <th>Payment Status</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -51,8 +50,13 @@ const MyOrders = () => {
             {isLoading ? (
               <Loader />
             ) : (
-              myOrders?.map((myOrder, index) => (
-                <MyOrder key={myOrder._id} index={index} myOrder={myOrder} refetch={refetch} />
+              orders?.map((order, index) => (
+                <ManageOrder
+                  key={order._id}
+                  index={index}
+                  order={order}
+                  refetch={refetch}
+                />
               ))
             )}
           </tbody>
@@ -62,4 +66,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default ManageOrders;

@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# TopTool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TopTool<sup>®</sup> is a reliable tool brand offering a comprehensive
+range of high performance and superior quality tool selections to meet
+the demands of today’s professional users.
 
-## Available Scripts
+## Live Link
 
-In the project directory, you can run:
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `npm start`
 

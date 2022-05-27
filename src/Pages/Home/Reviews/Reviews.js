@@ -1,5 +1,3 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useQuery } from "react-query";
@@ -11,7 +9,7 @@ import Review from "../Review/Review";
 const Reviews = () => {
   const navigate = useNavigate();
   const { data: reviews, isLoading } = useQuery("reviews", async () =>
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://evening-everglades-24047.herokuapp.com/reviews", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

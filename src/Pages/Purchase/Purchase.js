@@ -4,10 +4,9 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 import Loader from "../Shared/Loader/Loader";
-import Swal from "sweetalert2";
 
 const Purchase = () => {
   const [user, loading] = useAuthState(auth);
@@ -43,7 +42,7 @@ const Purchase = () => {
     };
     // post to order
     axios
-      .post("http://localhost:5000/order", purchase, {
+      .post("https://evening-everglades-24047.herokuapp.com/order", purchase, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -64,7 +63,7 @@ const Purchase = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: tool, isLoading } = useQuery(["tool", id], () =>
-    fetch(`http://localhost:5000/tool/${id}`, {
+    fetch(`https://evening-everglades-24047.herokuapp.com/tool/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

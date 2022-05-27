@@ -5,7 +5,7 @@ import ManageProduct from "../ManageProduct/ManageProduct";
 
 const ManageProducts = () => {
   const { data: tools, isLoading, refetch } = useQuery("tools", () =>
-    fetch("http://localhost:5000/tools", {
+    fetch("https://evening-everglades-24047.herokuapp.com/tools", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
