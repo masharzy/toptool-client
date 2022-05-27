@@ -140,7 +140,6 @@ const ManageOrder = ({ order, index, refetch }) => {
       <td>
         <button
           onClick={() => handleOrderDelete(_id)}
-          disabled={paid ? true : false}
           className="btn btn-warning"
         >
           Cancel Order
