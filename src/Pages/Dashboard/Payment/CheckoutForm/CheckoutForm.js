@@ -7,7 +7,7 @@ import Loader from "../../../Shared/Loader/Loader";
 
 const CheckoutForm = ({ order }) => {
   const { _id, name, email, price, address, phone, quantity } = order;
-  const totalPrice = price * quantity;
+  const totalPrice = parseFloat(price * quantity);
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
