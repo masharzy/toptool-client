@@ -2,12 +2,12 @@ import React from "react";
 
 const Blogs = () => {
   return (
-    <div className="container mx-auto my-20">
+    <div className="container mx-auto my-20 px-5">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-5">Blogs</h1>
       </div>
-      <div className="grid grid-cols-2">
-        <div className="card mb-5 border text-left mr-5 p-5 col-span-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div className="card mb-5 border text-left p-5 col-span-1">
           <strong>
             How will you improve the performance of a React Application?
           </strong>
@@ -47,8 +47,8 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-2">
-        <div className="card mb-5 border text-left mr-5 p-5 col-span-1">
+      <div className="grid gap-5 lg:grid-cols-2">
+        <div className="card mb-5 border text-left p-5 col-span-1">
           <strong>
             You have an array of products. Each product has a name, price,
             description, etc. How will you implement a search to find products
@@ -80,8 +80,8 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-2">
-        <div className="card mb-5 border text-left mr-5 p-5 col-span-1">
+      <div className="grid lg:grid-cols-2">
+        <div className="card mb-5 border text-left p-5 col-span-1">
           <strong>What is a unit test? Why should write unit tests?</strong>
           <p>
             Unit test সাধারণত স্বয়ংক্রিয় পরীক্ষাগুলি লিখিত এবং সফ্টওয়্যার

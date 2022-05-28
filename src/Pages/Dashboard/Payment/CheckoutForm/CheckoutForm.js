@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Loader from "../../../Shared/Loader/Loader";
 
 const CheckoutForm = ({ order }) => {
   const { _id, name, email, price, address, phone } = order;
@@ -44,7 +45,7 @@ const CheckoutForm = ({ order }) => {
       });
       navigate("/dashboard/myOrders");
     }
-  }, [success, transactionId]);
+  }, [success, transactionId, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -106,6 +107,7 @@ const CheckoutForm = ({ order }) => {
     }
   };
   if (loading) {
+    return <Loader />;
   }
   return (
     <>
@@ -134,7 +136,7 @@ const CheckoutForm = ({ order }) => {
               : "btn btn-success mt-4"
           }
           type="submit"
-          disabled={!stripe || !clientSecret || success || loading}
+          disabled={!stripe || !clientSecret || success}
         >
           {loading ? "Loading..." : "Pay"}
         </button>

@@ -16,11 +16,11 @@ const Tools = () => {
     return <Loader />;
   }
   return (
-    <div className="container lg:px-20 p-0 mx-auto mt-20">
+    <div className="container lg:px-20 p-0 mx-auto mt-20 px-5">
       <h2 className="font-bold text-center relative text-5xl text-primary after:w-36 after:bg-info after:h-1 after:absolute after:-bottom-2 after:left-0 after:right-0 after:mx-auto inline-block">
         Featured Tools
       </h2>
-      <div className="grid grid-cols-3 mt-10 gap-x-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 mt-10 gap-5">
         {tools && tools?.map((tool) => <Tool key={tool._id} tool={tool} />)}
       </div>
     </div>

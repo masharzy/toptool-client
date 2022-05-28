@@ -121,6 +121,14 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menu}</ul>
       </div>
+      {user && (
+        <label
+          for="my-drawer-2"
+          class="btn btn-accent text-white drawer-button m-0 lg:hidden lg:ml-10"
+        >
+          ☰
+        </label>
+      )}
     </div>
   );
 };

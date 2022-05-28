@@ -12,7 +12,7 @@ const Tool = ({ tool }) => {
     toolPrice,
   } = tool;
   return (
-    <div className="tool card border hover:shadow-xl hover:scale-105 transition-all duration-700">
+    <div className="tool card border hover:shadow-xl hover:scale-[1.02] transition-all duration-700">
       <div className="tool-image">
         <img src={toolImage} alt="TopTool" />
       </div>

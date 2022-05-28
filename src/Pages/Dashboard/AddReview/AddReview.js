@@ -53,7 +53,7 @@ const AddReview = () => {
 
   return (
     <div className="px-5 lg:px-20">
-      <div class="card flex-shrink-0 w-2/3 mx-auto shadow-2xl bg-base-100">
+      <div class="card flex-shrink-0 lg:w-2/3 mx-auto shadow-2xl bg-base-100">
         <h1 className="text-left text-2xl font-bold mt-5 ml-8 -mb-5">
           Add Review
         </h1>
