@@ -36,10 +36,18 @@ const Payment = () => {
         <div class="card-body">
           <h2 class="card-title">User Info</h2>
           <p class="card-text text-left">
-            <h4><span className="font-bold">Name:</span> {name}</h4>
-            <h4><span className="font-bold">Email:</span> {email}</h4>
-            <h4><span className="font-bold">Address:</span> {address}</h4>
-            <h4><span className="font-bold">Phone:</span> {phone}</h4>
+            <h4>
+              <span className="font-bold">Name:</span> {name}
+            </h4>
+            <h4>
+              <span className="font-bold">Email:</span> {email}
+            </h4>
+            <h4>
+              <span className="font-bold">Address:</span> {address}
+            </h4>
+            <h4>
+              <span className="font-bold">Phone:</span> {phone}
+            </h4>
           </p>
         </div>
       </div>

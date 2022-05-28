@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 import Loader from "../../../Shared/Loader/Loader";
 
 const CheckoutForm = ({ order }) => {
-  const { _id, name, email, price, address, phone } = order;
+  const { _id, name, email, price, address, phone, quantity } = order;
+  const totalPrice = price * quantity;
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -20,7 +21,7 @@ const CheckoutForm = ({ order }) => {
     axios
       .post(
         "https://evening-everglades-24047.herokuapp.com/create-payment-intent",
-        { price },
+        { totalPrice },
         {
           headers: {
             "content-type": "application/json",
@@ -33,7 +34,7 @@ const CheckoutForm = ({ order }) => {
           setClientSecret(res.data.clientSecret);
         }
       });
-  }, [price]);
+  }, [totalPrice]);
 
   useEffect(() => {
     if (success) {
@@ -107,7 +108,7 @@ const CheckoutForm = ({ order }) => {
     }
   };
   if (loading) {
-    return <Loader />;
+    // return <Loader />;
   }
   return (
     <>
